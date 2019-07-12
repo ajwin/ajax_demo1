@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax_review</title>
+</head>
+<body>
+    <h1 id="a">=====</h1>
+    <input type="button" id="btn" value="来！异步获取文件">
+    <script type="text/javascript">
+        var a = document.getElementById("a");
+        var btn = document.getElementById("btn")
+        btn.onclick = function(){
+
+            //Ajax 进入
+            // 第一步 创建一个xhr对象
+            var xhr = new XMLHttpRequest();
+            //第二步 判断接受状态并进行处理
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState ==4){
+                    // 接收文件做啥？
+                    a.innerHTML =  xhr.responseText;
+                }
+            }
+            //第三步创建请求，请求方式true为异步请求
+            xhr.open("get","a.txt", true);
+            //第四部，发送请求 ，get请求没报文则写空
+            xhr.send(null)
+            
+        }
+    </script>
+</body>
+</html>
